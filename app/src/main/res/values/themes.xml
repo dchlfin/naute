@@ -5,6 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorPrimary">@color/off_white</item>
         <item name="colorAccent">@color/charcoal</item>
+        <item name="colorTertiary">@color/gray1</item>
     </style>
 
     <style name="Theme.Naute" parent="Base.Theme.Naute" />
