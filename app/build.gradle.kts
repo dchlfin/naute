@@ -6,6 +6,10 @@ android {
     namespace = "com.example.naute"
     compileSdk = 37
 
+    buildFeatures {
+        dataBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.naute"
         minSdk = 24
