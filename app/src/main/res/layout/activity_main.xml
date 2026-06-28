@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data />
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -24,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/preferences_btn"
+        android:id="@+id/preferencesBtn"
         android:layout_width="51dp"
         android:layout_height="48dp"
         android:layout_marginTop="90dp"
@@ -36,7 +43,7 @@
         tools:src="@drawable/settings_icon" />
 
     <ImageButton
-        android:id="@+id/folders_btn"
+        android:id="@+id/foldersBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -49,7 +56,7 @@
          />
 
     <SearchView
-        android:id="@+id/search_bar"
+        android:id="@+id/searchBar"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="15dp"
@@ -61,12 +68,12 @@
         android:paddingEnd="20dp"
         android:searchIcon="@drawable/search_icon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/folders_btn"
+        app:layout_constraintStart_toEndOf="@id/foldersBtn"
         app:layout_constraintTop_toBottomOf="@id/heading"
         app:queryHint="Search.." />
 
     <ImageButton
-        android:id="@+id/create_naute_btn"
+        android:id="@+id/createNauteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
@@ -78,7 +85,7 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/introText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="200dp"
@@ -95,3 +102,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
