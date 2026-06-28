@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">naute</string>
+    <string name="query_hint">Search</string>
 </resources>
