@@ -41,9 +41,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Use ONLY binding to set the content
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.foldersBtn.setOnClickListener {
+            val intent = Intent(this, folders::class.java)
+            startActivity(intent)
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -116,4 +120,5 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         speechRecognizer.destroy()
     }
+
 }
