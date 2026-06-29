@@ -11,7 +11,6 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -49,6 +48,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.preferencesBtn.setOnClickListener {
+            val intent = Intent(this, preferences::class.java)
+            startActivity(intent)
+        }
+
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -73,16 +77,8 @@ class MainActivity : AppCompatActivity() {
             override fun onRmsChanged(p0: Float) {}
             override fun onBufferReceived(p0: ByteArray?) {}
             override fun onEndOfSpeech() {}
-            override fun onError(error: Int) {
-                Log.e("NAUTE", "Error: $error")
-                Toast.makeText(this@MainActivity, "Error: $error", Toast.LENGTH_SHORT).show()
-            }
-            override fun onResults(results: Bundle?) {
-                val data = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
-                if (!data.isNullOrEmpty()) {
-                    updateDialogText(data[0])
-                }
-            }
+            override fun onError(error: Int) {}
+            override fun onResults(results: Bundle?) {}
             override fun onPartialResults(partialResults: Bundle?) {
                 val data = partialResults?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
                 if (!data.isNullOrEmpty()) {
@@ -98,9 +94,11 @@ class MainActivity : AppCompatActivity() {
                     showTranscriptionDialog()
                     speechRecognizer.startListening(speechRecognizerIntent)
                     binding.createNauteBtn.setImageResource(R.drawable.create_naute_icon_pressed)
+                    binding.introText.text = ""
                     true
                 }
                 MotionEvent.ACTION_UP -> {
+                    showTranscriptionDialog()
                     speechRecognizer.stopListening()
                     binding.createNauteBtn.setImageResource(R.drawable.create_naute_icon)
                     true
