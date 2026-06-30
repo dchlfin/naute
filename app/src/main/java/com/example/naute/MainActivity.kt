@@ -36,8 +36,7 @@ class MainActivity : AppCompatActivity() {
         val discardBtn = dialogView?.findViewById<ImageButton>(R.id.discardBtn)
 
         discardBtn?.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            alertDialog?.dismiss()
         }
 
         builder.setView(dialogView)
