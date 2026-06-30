@@ -9,22 +9,52 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutDialog"
         android:layout_width="548dp"
-        android:layout_height="664dp"
-        android:padding="45dp"
-        android:background="@drawable/transcription_bg"
+        android:layout_height="846dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/innerLayout"
+            android:layout_width="548dp"
+            android:layout_height="664dp"
+            android:padding="45dp"
+            android:background="@drawable/transcription_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/transcriptionText"
-            android:layout_width="0dp"
+
+            <TextView
+                android:id="@+id/transcriptionText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Listening..."
+                android:textSize="50sp"
+                android:textColor="@color/gray2"
+                android:gravity="start"
+                app:layout_constraintTop_toTopOf="@id/innerLayout"
+                app:layout_constraintStart_toStartOf="@id/innerLayout"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageButton
+            android:id="@+id/addBtn"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Listening..."
-            android:textSize="50sp"
-            android:textColor="@color/gray2"
-            android:gravity="start"
-            app:layout_constraintTop_toTopOf="@id/layoutDialog"
-            app:layout_constraintStart_toStartOf="@id/layoutDialog"/>
+            android:layout_marginStart="117dp"
+            android:backgroundTint="#00FFFFFF"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/add_icon" />
+
+        <ImageButton
+            android:id="@+id/discardBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="117dp"
+            android:backgroundTint="#00FFFFFF"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/discard_icon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -30,10 +31,25 @@ class MainActivity : AppCompatActivity() {
     private fun showTranscriptionDialog() {
         dialogView = layoutInflater.inflate(R.layout.live_transcription_dialog, null)
         val builder = AlertDialog.Builder(this)
+
+        val addBtn = dialogView?.findViewById<ImageButton>(R.id.addBtn)
+        val discardBtn = dialogView?.findViewById<ImageButton>(R.id.discardBtn)
+
+        discardBtn?.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         builder.setView(dialogView)
         alertDialog = builder.create()
         alertDialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
         alertDialog?.show()
+    }
+
+    private fun updateDialogText(text: String) {
+        runOnUiThread {
+            dialogView?.findViewById<TextView>(R.id.transcriptionText)?.text = text
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,22 +111,23 @@ class MainActivity : AppCompatActivity() {
                     speechRecognizer.startListening(speechRecognizerIntent)
                     binding.createNauteBtn.setImageResource(R.drawable.create_naute_icon_pressed)
                     binding.introText.text = ""
+
                     true
                 }
                 MotionEvent.ACTION_UP -> {
-                    showTranscriptionDialog()
                     speechRecognizer.stopListening()
                     binding.createNauteBtn.setImageResource(R.drawable.create_naute_icon)
+
+                    val addBtn = dialogView?.findViewById<ImageButton>(R.id.addBtn)
+                    val discardBtn = dialogView?.findViewById<ImageButton>(R.id.discardBtn)
+
+                    addBtn?.visibility = View.VISIBLE
+                    discardBtn?.visibility = View.VISIBLE
+
                     true
                 }
                 else -> false
             }
-        }
-    }
-
-    private fun updateDialogText(text: String) {
-        runOnUiThread {
-            dialogView?.findViewById<TextView>(R.id.transcriptionText)?.text = text
         }
     }
 
