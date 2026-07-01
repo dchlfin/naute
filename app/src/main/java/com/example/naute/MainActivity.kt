@@ -20,8 +20,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.naute.databinding.ActivityMainBinding
-
-import java.util.Calendar
+import java.text.SimpleDateFormat
 import java.util.Date
 
 
@@ -32,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var dialogView: View? = null
     private var alertDialog: AlertDialog? = null
-    private val nautes = ArrayList<String>()
+    private val nautes = ArrayList<Naute>()
     val nAdapter = NauteAdapter(this, nautes)
 
     private fun showTranscriptionDialog() {
@@ -48,7 +47,11 @@ class MainActivity : AppCompatActivity() {
             val text = transcriptionText?.text.toString()
 
             if (text.isNotEmpty()){
-                nautes.add(0, text)
+                val d = Date()
+                val s = SimpleDateFormat("dd MMMM yyyy")
+                val date = s.format(d)
+
+                nautes.add(0, Naute(text, date))
                 nAdapter.notifyItemInserted(0)
                 binding.recyclerView.scrollToPosition(0)
                 alertDialog?.dismiss()
