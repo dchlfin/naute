@@ -55,6 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="42dp"
                     android:layout_marginBottom="48dp"
+                    android:gravity="start"
                     android:text="00:01:56"
                     android:textSize="32dp"
                     android:textColor="@color/gray4"
