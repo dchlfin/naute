@@ -12,11 +12,11 @@
         <androidx.cardview.widget.CardView
             android:layout_width="695dp"
             android:layout_height="215dp"
-
+            android:layout_marginBottom="32dp"
             app:cardBackgroundColor="@color/gray3"
             app:cardCornerRadius="15dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintBottom_toBottomOf="parent" >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
