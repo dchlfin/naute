@@ -56,6 +56,62 @@
             app:layout_constraintTop_toBottomOf="@id/heading"
             app:queryHint="Search.." />
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="695dp"
+        android:layout_height="215dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="65dp"
+        app:cardBackgroundColor="@color/gray3"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchBar" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/folderTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="46dp"
+                android:gravity="start"
+                android:text="all nautes"
+                android:textSize="36dp"
+                android:textStyle="bold"
+                android:textColor="@color/charcoal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/folderSize"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="42dp"
+                android:layout_marginBottom="48dp"
+                android:gravity="start"
+                android:text="1 naute"
+                android:textSize="32dp"
+                android:textColor="@color/gray4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/folderDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="42dp"
+                android:layout_marginBottom="48dp"
+                android:gravity="start"
+                android:text="09 July 2026"
+                android:textSize="32dp"
+                android:textColor="@color/gray4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
         <ImageButton
             android:id="@+id/createNauteBtn"
             android:layout_width="wrap_content"
