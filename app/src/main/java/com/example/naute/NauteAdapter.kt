@@ -5,11 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-data class Naute(val title: String, val date: String)
+data class Naute(val title: String, val date: String, val length: String)
 class NauteAdapter(private val context: Context, private val nautes: ArrayList<Naute>): RecyclerView.Adapter<NauteAdapter.ViewHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): ViewHolder {
         val nauteCard = LayoutInflater.from(context).inflate(R.layout.naute_card, viewGroup, false)
@@ -28,6 +26,7 @@ class NauteAdapter(private val context: Context, private val nautes: ArrayList<N
         fun bind(naute: Naute){
             itemView.findViewById<TextView>(R.id.nauteTitle).text = naute.title
             itemView.findViewById<TextView>(R.id.nauteDate).text = naute.date
+            itemView.findViewById<TextView>(R.id.nauteLength).text = naute.length
         }
     }
 }

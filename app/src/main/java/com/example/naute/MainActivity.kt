@@ -4,14 +4,15 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.SystemClock
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
 import android.widget.ImageButton
+import android.widget.Chronometer
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var dialogView: View? = null
     private var alertDialog: AlertDialog? = null
+    private val chronometer: Chronometer? = null
     private val nautes = ArrayList<Naute>()
     val nAdapter = NauteAdapter(this, nautes)
 
@@ -42,20 +44,25 @@ class MainActivity : AppCompatActivity() {
         val discardBtn = dialogView?.findViewById<ImageButton>(R.id.discardBtn)
 
         addBtn?.setOnClickListener {
+            chronometer?.stop()
+            var duration = chronometer?.text.toString()
             val transcriptionText = dialogView?.findViewById<TextView>(R.id.transcriptionText)
+            var text = transcriptionText?.text.toString()
 
-            val text = transcriptionText?.text.toString()
+            val d = Date()
+            val s = SimpleDateFormat("dd MMMM yyyy")
+            val date = s.format(d)
 
-            if (text.isNotEmpty()){
-                val d = Date()
-                val s = SimpleDateFormat("dd MMMM yyyy")
-                val date = s.format(d)
-
-                nautes.add(0, Naute(text, date))
-                nAdapter.notifyItemInserted(0)
-                binding.recyclerView.scrollToPosition(0)
-                alertDialog?.dismiss()
+            if (text == "Listening..") {
+                text = "Unrecorded Audio"
+                duration = "00:00"
             }
+
+            text = "Untitled"
+            nautes.add(0, Naute(text, date, duration))
+            nAdapter.notifyItemInserted(0)
+            binding.recyclerView.scrollToPosition(0)
+            alertDialog?.dismiss()
         }
 
         discardBtn?.setOnClickListener {
@@ -111,9 +118,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         speechRecognizer.setRecognitionListener(object : RecognitionListener {
-            override fun onReadyForSpeech(p0: Bundle?) {
-                Log.d("NAUTE", "Ready!")
-            }
+            override fun onReadyForSpeech(p0: Bundle?) {}
             override fun onBeginningOfSpeech() {}
             override fun onRmsChanged(p0: Float) {}
             override fun onBufferReceived(p0: ByteArray?) {}
@@ -132,6 +137,10 @@ class MainActivity : AppCompatActivity() {
         binding.createNauteBtn.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
+                    val chronometer = dialogView?.findViewById<Chronometer>(R.id.nauteLength)
+                    chronometer?.base = SystemClock.elapsedRealtime()
+                    chronometer?.start()
+
                     showTranscriptionDialog()
                     speechRecognizer.startListening(speechRecognizerIntent)
                     binding.createNauteBtn.setImageResource(R.drawable.create_naute_icon_pressed)
