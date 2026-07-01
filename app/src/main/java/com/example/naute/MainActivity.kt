@@ -20,6 +20,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.naute.databinding.ActivityFoldersBinding
 import com.example.naute.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var speechRecognizer: SpeechRecognizer
     private lateinit var speechRecognizerIntent: Intent
     private lateinit var binding: ActivityMainBinding
+    private var foldersView: View? = null
+
     private var dialogView: View? = null
     private var alertDialog: AlertDialog? = null
     private val chronometer: Chronometer? = null
@@ -38,16 +41,24 @@ class MainActivity : AppCompatActivity() {
 
     private fun showTranscriptionDialog() {
         dialogView = layoutInflater.inflate(R.layout.live_transcription_dialog, null)
+        foldersView = layoutInflater.inflate(R.layout.activity_folders, null)
+
         val builder = AlertDialog.Builder(this)
 
         val addBtn = dialogView?.findViewById<ImageButton>(R.id.addBtn)
         val discardBtn = dialogView?.findViewById<ImageButton>(R.id.discardBtn)
+        val folderSize = foldersView?.findViewById<TextView>(R.id.folderSize)
+        val folderDate = foldersView?.findViewById<TextView>(R.id.folderDate)
+        var n = 1
 
         addBtn?.setOnClickListener {
-            chronometer?.stop()
-            var duration = chronometer?.text.toString()
             val transcriptionText = dialogView?.findViewById<TextView>(R.id.transcriptionText)
             var text = transcriptionText?.text.toString()
+
+            chronometer?.stop()
+            var duration = chronometer?.text.toString()
+            n++
+            n.toString()
 
             val d = Date()
             val s = SimpleDateFormat("dd MMMM yyyy")
@@ -57,11 +68,19 @@ class MainActivity : AppCompatActivity() {
                 text = "Unrecorded Audio"
                 duration = "00:00"
             }
-
             text = "Untitled"
+
             nautes.add(0, Naute(text, date, duration))
             nAdapter.notifyItemInserted(0)
             binding.recyclerView.scrollToPosition(0)
+
+            if (n > 1) {
+                folderSize?.text = "$n naute"
+            } else {
+                folderSize?.text = "$n nautes"
+            }
+            folderDate?.text = date
+
             alertDialog?.dismiss()
         }
 
