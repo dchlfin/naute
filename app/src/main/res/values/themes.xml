@@ -3,10 +3,37 @@
     <style name="Base.Theme.Naute" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="colorPrimary">@color/off_white</item>
-        <item name="colorAccent">@color/charcoal</item>
-        <item name="colorTertiary">@color/gray1 </item>
+    </style>
+    <style name="Theme.Naute" parent="Base.Theme.Naute" />
+
+    <!-- light mode -->
+    <style name="background">
+        <item name="android:background">@color/off_white</item>
     </style>
 
-    <style name="Theme.Naute" parent="Base.Theme.Naute" />
+    <style name="primaryText">
+        <item name="android:textColor">@color/charcoal</item>
+    </style>
+
+    <style name="secondaryText">
+        <item name="android:textColor">@color/gray2</item>
+    </style>
+
+    <style name="tertiaryText">
+        <item name="android:textColor">@color/gray1</item>
+    </style>
+
+    <style name="cardBackground">
+        <item name="android:background">@color/gray3</item>
+    </style>
+
+    <style name="cardSecondaryText">
+        <item name="android:textColor">@color/gray4</item>
+    </style>
+
+    <style name="searchBarStroke">
+        <item name="android:color">@color/charcoal</item>
+    </style>
+
+
 </resources>

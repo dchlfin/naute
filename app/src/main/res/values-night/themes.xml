@@ -4,4 +4,34 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+
+    <!-- dark mode -->
+    <style name="background">
+        <item name="android:background">@color/charcoal</item>
+    </style>
+
+    <style name="primaryText">
+        <item name="android:textColor">@color/off_white</item>
+    </style>
+
+    <style name="secondaryText">
+        <item name="android:textColor">@color/gray5</item>
+    </style>
+
+    <style name="tertiaryText">
+        <item name="android:textColor">@color/gray6</item>
+    </style>
+
+    <style name="cardBackground">
+        <item name="android:background">@color/gray7</item>
+    </style>
+
+    <style name="cardSecondaryText">
+        <item name="android:textColor">@color/gray5</item>
+    </style>
+
+    <style name="searchBarStroke">
+        <item name="android:color">@color/off_white</item>
+    </style>
+
 </resources>
