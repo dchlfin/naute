@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:text="Listening..."
                 android:textSize="50sp"
-                android:textColor="@color/gray2"
+                style="@style/secondaryText"
                 android:gravity="start"
                 app:layout_constraintTop_toTopOf="@id/innerLayout"
                 app:layout_constraintStart_toStartOf="@id/innerLayout"/>

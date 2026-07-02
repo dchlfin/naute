@@ -13,14 +13,14 @@
             android:layout_width="695dp"
             android:layout_height="215dp"
             android:layout_marginBottom="32dp"
-            app:cardBackgroundColor="@color/gray3"
             app:cardCornerRadius="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                style="@style/cardBackground">
 
                 <TextView
                     android:id="@+id/nauteTitle"
@@ -30,9 +30,9 @@
                     android:layout_marginTop="46dp"
                     android:gravity="start"
                     android:text="Untitled"
+                    style="@style/primaryText"
                     android:textSize="36dp"
                     android:textStyle="bold"
-                    android:textColor="@color/charcoal"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,7 +45,7 @@
                     android:gravity="start"
                     android:text="09 July 2026"
                     android:textSize="32dp"
-                    android:textColor="@color/gray4"
+                    style="@style/cardSecondaryText"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
@@ -57,7 +57,7 @@
                     android:layout_marginBottom="48dp"
                     android:gravity="start"
                     android:textSize="32dp"
-                    android:textColor="@color/gray4"
+                    style="@style/cardSecondaryText"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent" />
 

@@ -7,7 +7,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/preferences"
-        android:background="@color/off_white"
+        style="@style/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".preferences">
@@ -20,7 +20,7 @@
             android:layout_marginTop="80dp"
             android:gravity="start"
             android:text="preferences"
-            android:textColor="@color/charcoal"
+            style="@style/primaryText"
             android:textSize="48sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,8 +36,7 @@
             android:background="#00F3F3F1"
             android:src="@drawable/previous_icon"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/previous_icon" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <SearchView
             android:id="@+id/searchBar"
@@ -64,7 +63,7 @@
             android:layout_marginTop="90dp"
             android:gravity="start"
             android:text="Dark Mode"
-            android:textColor="@color/charcoal"
+            style="@style/primaryText"
             android:textStyle="bold"
             android:textSize="36dp"
             app:layout_constraintStart_toStartOf="parent"
