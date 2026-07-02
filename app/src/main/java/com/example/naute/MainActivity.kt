@@ -20,7 +20,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.naute.databinding.ActivityFoldersBinding
 import com.example.naute.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.Date
