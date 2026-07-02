@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var speechRecognizerIntent: Intent
     private lateinit var binding: ActivityMainBinding
     private var foldersView: View? = null
-
     private var dialogView: View? = null
     private var alertDialog: AlertDialog? = null
     private val chronometer: Chronometer? = null
